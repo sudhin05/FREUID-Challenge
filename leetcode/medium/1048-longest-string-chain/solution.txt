@@ -1,0 +1,37 @@
+class Solution {
+private:
+    bool compareWords(const string& word1, const string& word2){
+        int m = word1.length(), n = word2.length();
+        if (abs(m-n)!=1) return false;
+        int i=0,j=0,ctr=0;
+        while (i<m && j<n){
+            if (word1[i]!=word2[j]){
+                ctr++;
+                if (ctr>1) return false;
+                if (m>n) i++;
+                else j++;
+            }
+            else{
+                i++;
+                j++;
+            }
+            
+     …         if (compareWords(words[i],words[prv]) && 1+dp[prv]>dp[i]){
+                    dp[i]=1+dp[prv];
+                    hash[i]=prv;
+                }
+            }
+            if (dp[i]>maxi){
+                maxi = dp[i];
+                lidx = i;
+            }
+        }
+        vector<string> sol;
+        sol.push_back(words[lidx]);
+        while (lidx!=hash[lidx]){
+            lidx = hash[lidx];
+            sol.push_back(words[lidx]);
+        }
+        return sol.size();       
+    }
+};
